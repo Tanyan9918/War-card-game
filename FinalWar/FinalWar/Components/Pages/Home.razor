@@ -1,0 +1,21 @@
+﻿@page "/"
+
+@using FinalWar.Models
+@using FinalWar.Services
+
+
+<h3>War Rules</h3>
+<p>Each Player will play a generated card from their hand</p>
+<br />
+<p>If there is a tie with the highest value card, the players with the tie will play again</p>
+<br />
+<p>The player that has all the cards wins</p>
+<br />
+<p>The ranks of the cards follows least to greatest:</p>
+<br />
+<ul>
+    @foreach (Rank rank in Enum.GetValues(typeof(Rank)))
+    {
+        <li>@rank</li>
+    }
+</ul>

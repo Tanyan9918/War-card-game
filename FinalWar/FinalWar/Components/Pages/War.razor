@@ -1,0 +1,122 @@
+﻿@using FinalWar.Models;
+@using FinalWar.Services;
+@page "/war"
+<h3>War</h3>
+
+<div class="row">
+    <div class="col-md-12">
+        @if (game != null && game.Winner != string.Empty)
+        {
+            <h4>@game.Winner has won the game!</h4>
+        }
+        else if (!GameIsStarted)
+        {
+            <label for="PlayersNum">The amount of players</label>
+            <select @bind="amountOfPlayers">
+                @for (int i = 2; i < 5; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+            <button @onclick="StartGame">Start Game</button>
+        }
+        else if (game != null) // Ensure game is not null before accessing its properties
+        {
+            <h4>Current Players:</h4>
+            @foreach (var player in playerNames)
+            {
+                <div>
+                    <span>@player</span> - <span>@cardsLeft[player]</span> card(s) left.
+                    @if (game.PlayedCards.ContainsKey(player))
+                    {
+                        var playedCard = game.PlayedCards[player];
+                        <span> - Played Card: @playedCard.Rank of @playedCard.Suit</span>
+                    }
+                </div>
+            }
+
+            <h4>Game Message:</h4>
+            <div>@gameMessage</div>
+
+            <button @onclick="PlayRound">Play Round</button>
+        }
+    </div>
+</div>
+
+@code {
+    /// <summary>
+    /// Stores if the Game has started to display a specific screen
+    /// </summary>
+    bool GameIsStarted = false;
+
+    /// <summary>
+    /// Stores the amount of players
+    /// </summary>
+    int amountOfPlayers = 0;
+
+    /// <summary>
+    /// Stores all of the players name
+    /// </summary>
+    List<string> playerNames = new List<string>();
+
+    /// <summary>
+    /// Creates a dictionary to store the cardsLeft
+    /// </summary>
+    Dictionary<string, int> cardsLeft = new Dictionary<string, int>();
+
+    /// <summary>
+    /// Sets the gameMessage to empty so nothing is displaying
+    /// </summary>
+    string gameMessage = string.Empty;
+
+    /// <summary>
+    /// Initializes the game
+    /// </summary>
+    private Game game; 
+
+    /// <summary>
+    /// Starts the game
+    /// </summary>
+    private void StartGame()
+    {
+        playerNames.Clear();
+        for (int i = 0; i < amountOfPlayers; i++)
+        {
+            playerNames.Add($"Player {i + 1}");
+        }
+        game = new Game(playerNames); // Initialize the game instance
+        UpdatePlayerCardsLeft();
+        GameIsStarted = true;
+    }
+
+    /// <summary>
+    /// Updates the cards that each players have left
+    /// </summary>
+    private void UpdatePlayerCardsLeft()
+    {
+        if (game != null) // Check if game is not null before accessing
+        {
+            foreach (var player in playerNames)
+            {
+                cardsLeft[player] = game.hands.GetCardsLeft(player);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Plays the rounds of the game
+    /// </summary>
+    private void PlayRound()
+    {
+        if (game != null) // Check if game is not null before playing a round
+        {
+            game.Rounds(); // This should handle the game logic
+
+            // Update the game message to show the result of the round
+            gameMessage = game.GameMessage;
+
+            // Update player card counts after the round
+            UpdatePlayerCardsLeft();
+        }
+    }
+}

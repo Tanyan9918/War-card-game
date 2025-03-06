@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\super\\source\\repos\\FinalWar\\FinalWar\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FinalWar.bundle.scp.css",
+      "PackagePath": "staticwebassets\\FinalWar.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\super\\source\\repos\\FinalWar\\FinalWar\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\super\\source\\repos\\FinalWar\\FinalWar\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\super\\source\\repos\\FinalWar\\FinalWar\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\super\\source\\repos\\FinalWar\\FinalWar\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FinalWar.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.FinalWar.props",
+      "PackagePath": "build\\FinalWar.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.FinalWar.props",
+      "PackagePath": "buildMultiTargeting\\FinalWar.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.FinalWar.props",
+      "PackagePath": "buildTransitive\\FinalWar.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
